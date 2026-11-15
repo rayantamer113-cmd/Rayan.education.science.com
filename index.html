@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7th Grade Inspire Science | One Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+      background: #f5faff;
+      color: #1e2f4a;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 30, 60, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .logo .blue { color: #0056b3; }
+    .logo .green { color: #7cb342; }
+    .logo i {
+      font-size: 2rem;
+      color: #1e6f9f;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1e2f4a;
+      transition: 0.2s;
+      font-size: 1rem;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #1e6f9f;
+      border-bottom-color: #1e6f9f;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3rem 5% 4rem;
+      background: linear-gradient(145deg, #e8f2fc 0%, #ffffff 100%);
+      border-bottom: 1px solid rgba(30, 111, 159, 0.1);
+    }
+
+    .hero-text {
+      flex: 1 1 400px;
+      max-width: 650px;
+    }
+
+    .hero-text .badge {
+      display: inline-block;
+      background: #d4e9ff;
+      color: #0a2e4a;
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #b8d9ff;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: #0a2e4a;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text h1 i {
+      color: #1e6f9f;
+      font-size: 0.9em;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #2e4a6b;
+      margin-bottom: 2.5rem;
+      max-width: 550px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.25s ease;
+      font-size: 1rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: #1e6f9f;
+      color: white;
+      box-shadow: 0 8px 18px rgba(30, 111, 159, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #0f547c;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 22px rgba(30, 111, 159, 0.35);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #1e6f9f;
+      color: #1e6f9f;
+    }
+
+    .btn-outline:hover {
+      background: #1e6f9f;
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .hero-visual {
+      flex: 1 1 320px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    /* 3D containers */
+    .three-container {
+      position: relative;
+      width: 100%;
+      cursor: grab;
+      touch-action: pan-y;
+    }
+
+    .three-container:active {
+      cursor: grabbing;
+    }
+
+    .three-container canvas {
+      display: block;
+      border-radius: 24px;
+    }
+
+    .hero-3d {
+      max-width: 460px;
+      height: 400px;
+    }
+
+    .three-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 0.6rem;
+      color: #4a627c;
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 1rem;
+      background: #eef7ff;
+      border-radius: 24px;
+      border: 1px dashed #b8d9ff;
+    }
+
+    .three-fallback i {
+      font-size: 2.4rem;
+      color: #1e6f9f;
+    }
+
+    /* Section headings */
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0a2e4a;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #4a627c;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 3.5rem;
+    }
+
+    /* Units */
+    .units {
+      padding: 4rem 5% 5rem;
+      background: #ffffff;
+    }
+
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .unit-card {
+      background: #f9fcff;
+      border-radius: 28px;
+      padding: 0;
+      box-shadow: 0 10px 25px rgba(0, 20, 40, 0.04);
+      border: 1px solid #e2effa;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .unit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 35px rgba(30, 111, 159, 0.12);
+      border-color: #b8d9ff;
+      background: #ffffff;
+    }
+
+    /* Textbook Covers Mimicking Image */
+    .unit-cover {
+      height: 220px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+      overflow: hidden;
+    }
+    
+    .cover-top-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .cover-title-area {
+      position: relative;
+      z-index: 2;
+      background: white;
+      border-radius: 12px;
+      padding: 0.8rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-top: auto;
+    }
+
+    .cover-title-area h4 {
+      font-size: 0.7rem;
+      color: #555;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.2rem;
+    }
+    
+    .cover-title-area h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #0056b3;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .cover-title-area span {
+      color: #7cb342;
+    }
+
+    /* Unit 1 Cover Mimic: Energy Explosion */
+    .unit1-cover {
+      background: linear-gradient(to bottom, #1a0b2e, #4a2c5e, #f39c12, #f1c40f);
+    }
+    .unit1-cover::before {
+      content: '';
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #fff 0%, #ffd700 20%, #f39c12 50%, transparent 80%);
+      border-radius: 50%;
+      opacity: 0.9;
+      z-index: 1;
+    }
+    .unit1-cover::after {
+      content: '🧍';
+      position: absolute;
+      bottom: 65px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2.5rem;
+      z-index: 2;
+      filter: brightness(0) drop-shadow(0 0 5px #000);
+    }
+
+    /* Unit 2 Cover Mimic: Canyon/River */
+    .unit2-cover {
+      background: linear-gradient(to bottom, #2c3e50, #557c55, #4a7c59);
+    }
+    .unit2-cover::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L30,40 L70,60 L100,20 L100,100 Z" fill="rgba(20,40,20,0.6)"/><path d="M0,100 L40,50 L80,70 L100,40 L100,100 Z" fill="rgba(100,140,100,0.4)"/><path d="M0,100 L45,60 L55,60 L100,50 L100,100 Z" fill="rgba(200,220,240,0.6)"/></svg>');
+      background-size: cover;
+      z-index: 1;
+    }
+
+    /* Units 3 & 4 covers */
+    .unit3-cover {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+    }
+    .unit4-cover {
+      background: linear-gradient(135deg, #11998e, #38ef7d);
+    }
+
+    .unit-body {
+      padding: 1.5rem 1.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .unit-modules {
+      list-style: none;
+      margin: 0 0 1.5rem;
+      padding: 0;
+      flex: 1;
+    }
+
+    .unit-modules li {
+      padding: 0.4rem 0;
+      border-bottom: 1px dashed #d4e2f0;
+      font-size: 0.95rem;
+      color: #2e4a6b;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .unit-modules li:last-child {
+      border-bottom: none;
+    }
+
+    .unit-modules i {
+      color: #1e6f9f;
+      font-size: 0.7rem;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    /* Expanding details */
+    .unit-extra {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.45s ease, opacity 0.35s ease, margin 0.35s ease;
+      margin-top: 0;
+    }
+
+    .unit-card.expanded .unit-extra {
+      max-height: 620px;
+      opacity: 1;
+      margin-top: 1.2rem;
+    }
+
+    .unit-extra-inner {
+      background: #eef7ff;
+      border: 1px solid #d4e6f7;
+      border-radius: 18px;
+      padding: 1.1rem 1.2rem;
+    }
+
+    .unit-extra h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #1e6f9f;
+      margin-bottom: 0.5rem;
+    }
+
+    .unit-extra h4:not(:first-child) {
+      margin-top: 1rem;
+    }
+
+    .unit-extra p {
+      font-size: 0.92rem;
+      color: #2e4a6b;
+      margin-bottom: 0.4rem;
+    }
+
+    .unit-extra .chip {
+      display: inline-block;
+      background: #ffffff;
+      border: 1px solid #c9def0;
+      color: #1e4a6e;
+      border-radius: 30px;
+      padding: 0.22rem 0.7rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin: 0.2rem 0.25rem 0.2rem 0;
+    }
+
+    .unit-extra .see3d {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      padding: 0.55rem 1.1rem;
+    }
+
+    .unit-link {
+      background: none;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e6f9f;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      transition: gap 0.2s, color 0.2s;
+      margin-top: auto;
+      padding: 0;
+    }
+
+    .unit-link i {
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+    }
+
+    .unit-link:hover {
+      gap: 12px;
+      color: #0f547c;
+    }
+
+    .unit-card.expanded .unit-link i {
+      transform: rotate(90deg);
+    }
+
+    /* 3D Lab */
+    .lab {
+      padding: 4rem 5% 5rem;
+      background: linear-gradient(180deg, #f0f7fe 0%, #e9f3fd 100%);
+    }
+
+    .lab-panel {
+      max-width: 1050px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 2rem 2rem 2.2rem;
+      box-shadow: 0 25px 50px rgba(10, 46, 74, 0.1);
+      border: 1px solid #dfeefb;
+    }
+
+    .model-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .model-btn {
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.65rem 1.4rem;
+      border-radius: 40px;
+      border: 2px solid #d4e6f7;
+      background: #f7fbff;
+      color: #1e4a6e;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .model-btn:hover {
+      border-color: #9ac7f0;
+      transform: translateY(-2px);
+      background: #ffffff;
+    }
+
+    .model-btn.active {
+      background: #1e6f9f;
+      border-color: #1e6f9f;
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(30, 111, 159, 0.28);
+    }
+
+    .lab-canvas {
+      height: 480px;
+      background: radial-gradient(circle at 50% 40%, #eef7ff 0%, #dcebfa 60%, #cfe3f5 100%);
+      border-radius: 26px;
+      border: 1px solid #cfe3f5;
+      overflow: hidden;
+    }
+
+    .lab-info {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1.4rem;
+      padding: 0 0.4rem;
+    }
+
+    .model-desc {
+      font-size: 1rem;
+      color: #2e4a6b;
+      max-width: 720px;
+    }
+
+    .model-desc strong {
+      color: #0a2e4a;
+    }
+
+    .hint {
+      font-size: 0.82rem;
+      color: #7d93a8;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.3rem;
+      padding-top: 1.3rem;
+      border-top: 1px dashed #d4e2f0;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.85rem;
+      color: #2e4a6b;
+    }
+
+    .legend-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Lesson Spotlight */
+    .spotlight {
+      padding: 4rem 5%;
+      background: #ffffff;
+    }
+
+    .spotlight-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .spotlight-text {
+      flex: 1 1 400px;
+    }
+
+    .spotlight-text h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0a2e4a;
+      margin-bottom: 1rem;
+    }
+
+    .spotlight-text p {
+      font-size: 1.1rem;
+      color: #2e4a6b;
+      margin-bottom: 1.5rem;
+    }
+
+    .spotlight-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .spotlight-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #d4e2f0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+      color: #1e2f4a;
+    }
+
+    .spotlight-list li:last-child {
+      border-bottom: none;
+    }
+
+    .spotlight-list li i {
+      color: #1e6f9f;
+      font-size: 1.2rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    .spotlight-visual {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .spotlight-visual i {
+      font-size: 10rem;
+      color: #1e6f9f;
+      opacity: 0.8;
+      filter: drop-shadow(0 10px 20px rgba(30, 111, 159, 0.2));
+    }
+
+    /* Fun Fact */
+    .fact-section {
+      padding: 4rem 5%;
+      background: linear-gradient(135deg, #0a2e4a 0%, #133e5e 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .fact-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .fact-icon {
+      font-size: 3rem;
+      opacity: 0.7;
+      margin-bottom: 1rem;
+      color: #9ac7f0;
+    }
+
+    .fact-text {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.4;
+      font-style: italic;
+      letter-spacing: -0.3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .fact-author {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      letter-spacing: 1px;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    /* Footer */
+    footer {
+      background: #0d1f30;
+      color: #b6cde0;
+      padding: 3rem 5% 2rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: 1300px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      max-width: 300px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links h4 {
+      color: white;
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-links a,
+    .footer-links button.linklike {
+      color: #b6cde0;
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 0;
+      text-align: left;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .footer-links a:hover,
+    .footer-links button.linklike:hover {
+      color: #7ab7e0;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #1e3e57;
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .footer-bottom i {
+      color: #9ac7f0;
+      margin: 0 4px;
+    }
+
+    .footer-bottom button.linklike {
+      background: none;
+      border: none;
+      color: #b6cde0;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom button.linklike:hover {
+      color: #7ab7e0;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 22, 38, 0.66);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 500;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: #ffffff;
+      border-radius: 28px;
+      max-width: 560px;
+      width: 100%;
+      padding: 2.2rem 2rem 2rem;
+      position: relative;
+      box-shadow: 0 30px 70px rgba(0, 20, 40, 0.35);
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.28s ease;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: #eef7ff;
+      color: #1e4a6e;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #d4e9ff;
+      transform: rotate(90deg);
+    }
+
+    .modal h3 {
+      font-size: 1.6rem;
+      color: #0a2e4a;
+      margin-bottom: 0.8rem;
+      padding-right: 2.5rem;
+    }
+
+    .modal p {
+      color: #2e4a6b;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .modal .modal-note {
+      background: #eef7ff;
+      border: 1px solid #d4e6f7;
+      border-radius: 16px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.9rem;
+      color: #1e4a6e;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .modal .modal-note i {
+      color: #1e6f9f;
+      margin-top: 3px;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 26px;
+      left: 50%;
+      transform: translate(-50%, 24px);
+      background: #0a2e4a;
+      color: #ffffff;
+      padding: 0.85rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 14px 30px rgba(0, 20, 40, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 600;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+      max-width: 92vw;
+    }
+
+    .toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+    }
+
+    .toast i {
+      color: #9ac7f0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 5%;
+      }
+      .nav-links {
+        gap: 1.8rem;
+      }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2.5rem 5% 3rem;
+      }
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-buttons {
+        justify-content: center;
+      }
+      .hero-3d {
+        height: 320px;
+      }
+      .lab-canvas {
+        height: 360px;
+      }
+      .lab-panel {
+        padding: 1.4rem 1.1rem 1.6rem;
+      }
+      .lab-info {
+        justify-content: center;
+        text-align: center;
+      }
+      .spotlight-container {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .spotlight-list li {
+        justify-content: center;
+      }
+      .footer-content {
+        flex-direction: column;
+      }
+      .footer-links {
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .btn {
+        padding: 0.8rem 1.6rem;
+      }
+      .model-btn {
+        font-size: 0.82rem;
+        padding: 0.55rem 1.05rem;
+      }
+      .hero-3d {
+        height: 280px;
+      }
+      .lab-canvas {
+        height: 300px;
+      }
+      .unit-cover {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="#top" class="logo">
+      <i class="fas fa-atom"></i> <span class="blue">Inspire</span><span class="green">Science</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#top" data-nav>Home</a></li>
+      <li><a href="#units" data-nav>Units</a></li>
+      <li><a href="#lab" data-nav>3D Lab</a></li>
+      <li><a href="#resources" data-nav>Resources</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="top">
+    <div class="hero-text">
+      <span class="badge"><i class="fas fa-cube" style="margin-right:6px;"></i> 7th Grade Integrated &middot; 3D Models</span>
+      <h1>Discover the <i>science</i> all around you</h1>
+      <p>Explore matter, Earth's changing surface, natural resources, and ecosystems through hands-on investigations, real-world phenomena, and interactive 3D models.</p>
+      <div class="hero-buttons">
+        <a href="#lab" class="btn btn-primary"><i class="fas fa-cube"></i> Open 3D lab</a>
+        <button type="button" class="btn btn-outline" id="introBtn">
+          <i class="fas fa-circle-play"></i> Watch intro
+        </button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div id="hero3d" class="three-container hero-3d" aria-label="Interactive 3D atom model"></div>
+    </div>
+  </section>
+
+  <section class="units" id="units">
+    <h2 class="section-title">Course units</h2>
+    <p class="section-subtitle">Four integrated units that connect chemistry, Earth science, and life science. Tap a unit to expand it right here on this page.</p>
+    <div class="units-grid">
+
+      <!-- Unit 1 -->
+      <div class="unit-card" data-unit="unit1">
+        <div class="unit-cover unit1-cover">
+          <div class="cover-top-bar">
+            <span>Grade 7 Integrated</span>
+            <span>Science</span>
+          </div>
+          <div class="cover-title-area">
+            <h4>Inspire</h4>
+            <h3><span>Science</span><br>Understanding Matter</h3>
+          </div>
+        </div>
+        <div class="unit-body">
+          <ul class="unit-modules">
+            <li><i class="fas fa-circle"></i> Module: Classification and States of Matter</li>
+            <li><i class="fas fa-circle"></i> Lesson: Energy and States of Matter</li>
+            <li><i class="fas fa-circle"></i> Lesson: Changes in Temperature &amp; Pressure</li>
+            <li><i class="fas fa-circle"></i> Module: Matter&mdash;Properties and Changes</li>
+            <li><i class="fas fa-circle"></i> Lesson: Chemical Reactions &amp; Energy</li>
+          </ul>
+
+          <div class="unit-extra" aria-hidden="true">
+            <div class="unit-extra-inner">
+              <h4>Key concepts</h4>
+              <span class="chip">Particle motion</span>
+              <span class="chip">Thermal energy</span>
+              <span class="chip">Phase changes</span>
+              <span class="chip">Conservation of mass</span>
+              <h4>Investigation</h4>
+              <p><strong>Melting Race</strong> &mdash; compare how different materials absorb and release thermal energy over time.</p>
+              <button type="button" class="btn btn-primary see3d" data-model-target="lattice">
+                <i class="fas fa-th"></i> See a crystal lattice in 3D
+              </button>
+            </div>
+          </div>
+
+          <button type="button" class="unit-link" aria-expanded="false">
+            Explore Unit 1 <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Unit 2 -->
+      <div class="unit-card" data-unit="unit2">
+        <div class="unit-cover unit2-cover">
+          <div class="cover-top-bar">
+            <span>Grade 7 Integrated</span>
+            <span>Science</span>
+          </div>
+          <div class="cover-title-area">
+            <h4>Inspire</h4>
+            <h3><span>Science</span><br>The Changing Earth</h3>
+          </div>
+        </div>
+        <div class="unit-body">
+          <ul class="unit-modules">
+            <li><i class="fas fa-circle"></i> Module: Dynamic Earth</li>
+            <li><i class="fas fa-circle"></i> Lesson: Moving Continents</li>
+            <li><i class="fas fa-circle"></i> Lesson: Shaping Earth's Surface</li>
+            <li><i class="fas fa-circle"></i> Module: Natural Hazards</li>
+            <li><i class="fas fa-circle"></i> Lesson: Earthquakes, Volcanoes &amp; Severe Weather</li>
+          </ul>
+
+          <div class="unit-extra" aria-hidden="true">
+            <div class="unit-extra-inner">
+              <h4>Key concepts</h4>
+              <span class="chip">Plate boundaries</span>
+              <span class="chip">Convection currents</span>
+              <span class="chip">Rock strata</span>
+              <span class="chip">Hazard preparedness</span>
+              <h4>Investigation</h4>
+              <p><strong>Shake Table</strong> &mdash; build a model structure and test how it survives a simulated fault-line quake.</p>
+              <button type="button" class="btn btn-primary see3d" data-model-target="earth">
+                <i class="fas fa-globe"></i> See Earth's layers in 3D
+              </button>
+            </div>
+          </div>
+
+          <button type="button" class="unit-link" aria-expanded="false">
+            Explore Unit 2 <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Unit 3 -->
+      <div class="unit-card" data-unit="unit3">
+        <div class="unit-cover unit3-cover">
+          <div class="cover-top-bar">
+            <span>Grade 7 Integrated</span>
+            <span>Science</span>
+          </div>
+          <div class="cover-title-area">
+            <h4>Inspire</h4>
+            <h3><span>Science</span><br>Earth's Resources</h3>
+          </div>
+        </div>
+        <div class="unit-body">
+          <ul class="unit-modules">
+            <li><i class="fas fa-circle"></i> Module: Distribution of Earth's Resources</li>
+            <li><i class="fas fa-circle"></i> Lesson: Natural Resources &amp; Depletion</li>
+            <li><i class="fas fa-circle"></i> Module: Materials Science</li>
+            <li><i class="fas fa-circle"></i> Lesson: Synthetic Technology</li>
+            <li><i class="fas fa-circle"></i> Lesson: Impacts of Synthetic Materials</li>
+          </ul>
+
+          <div class="unit-extra" aria-hidden="true">
+            <div class="unit-extra-inner">
+              <h4>Key concepts</h4>
+              <span class="chip">Renewable resources</span>
+              <span class="chip">Nonrenewable resources</span>
+              <span class="chip">Synthetic materials</span>
+              <span class="chip">Life-cycle impact</span>
+              <h4>Investigation</h4>
+              <p><strong>Life Cycle Audit</strong> &mdash; trace an everyday product from raw material to disposal and propose a better design.</p>
+              <button type="button" class="btn btn-primary see3d" data-model-target="lattice">
+                <i class="fas fa-th"></i> See a crystal lattice in 3D
+              </button>
+            </div>
+          </div>
+
+          <button type="button" class="unit-link" aria-expanded="false">
+            Explore Unit 3 <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Unit 4 -->
+      <div class="unit-card" data-unit="unit4">
+        <div class="unit-cover unit4-cover">
+          <div class="cover-top-bar">
+            <span>Grade 7 Integrated</span>
+            <span>Science</span>
+          </div>
+          <div class="cover-title-area">
+            <h4>Inspire</h4>
+            <h3><span>Science</span><br>Interactions Within Ecosystems</h3>
+          </div>
+        </div>
+        <div class="unit-body">
+          <ul class="unit-modules">
+            <li><i class="fas fa-circle"></i> Module: Matter and Energy in Ecosystems</li>
+            <li><i class="fas fa-circle"></i> Lesson: Photosynthesis &amp; Cellular Respiration</li>
+            <li><i class="fas fa-circle"></i> Lesson: Flow of Energy &amp; Cycling of Matter</li>
+            <li><i class="fas fa-circle"></i> Module: Dynamic Ecosystems &amp; Biodiversity</li>
+            <li><i class="fas fa-circle"></i> Lesson: Benefits &amp; Maintenance of Biodiversity</li>
+          </ul>
+
+          <div class="unit-extra" aria-hidden="true">
+            <div class="unit-extra-inner">
+              <h4>Key concepts</h4>
+              <span class="chip">Photosynthesis</span>
+              <span class="chip">Cellular respiration</span>
+              <span class="chip">Food webs</span>
+              <span class="chip">Biodiversity</span>
+              <h4>Investigation</h4>
+              <p><strong>Energy Pyramid</strong> &mdash; quantify how much energy is lost across trophic levels in a real food chain.</p>
+              <button type="button" class="btn btn-primary see3d" data-model-target="dna">
+                <i class="fas fa-dna"></i> See DNA in 3D
+              </button>
+            </div>
+          </div>
+
+          <button type="button" class="unit-link" aria-expanded="false">
+            Explore Unit 4 <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="lab" id="lab">
+    <h2 class="section-title">3D science lab</h2>
+    <p class="section-subtitle">Rotate, zoom, and inspect real scientific structures in three dimensions &mdash; all inside this page.</p>
+
+    <div class="lab-panel">
+      <div class="model-buttons" role="tablist" aria-label="3D model selector">
+        <button class="model-btn active" data-model="atom" role="tab" aria-selected="true">
+          <i class="fas fa-atom"></i> Atom
+        </button>
+        <button class="model-btn" data-model="earth" role="tab" aria-selected="false">
+          <i class="fas fa-globe"></i> Earth's Layers
+        </button>
+        <button class="model-btn" data-model="dna" role="tab" aria-selected="false">
+          <i class="fas fa-dna"></i> DNA
+        </button>
+        <button class="model-btn" data-model="lattice" role="tab" aria-selected="false">
+          <i class="fas fa-th"></i> Crystal Lattice
+        </button>
+      </div>
+
+      <div id="lab3d" class="three-container lab-canvas" aria-label="Interactive 3D science model viewer"></div>
+
+      <div class="lab-info">
+        <p class="model-desc" id="model-desc">
+          <strong>Atomic structure.</strong> A nucleus of protons and neutrons is surrounded by
+          electrons travelling in energy levels. Explore how the arrangement of particles explains
+          the properties of matter (Unit 1).
+        </p>
+        <span class="hint"><i class="fas fa-hand-pointer"></i> Drag to rotate &middot; Scroll to zoom</span>
+      </div>
+
+      <div class="legend" id="legend">
+        <span class="legend-item"><span class="legend-dot" style="background:#e2504a"></span> Proton</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#4a7fe2"></span> Neutron</span>
+        <span class="legend-item"><span class="legend-dot" style="background:#ffd166"></span> Electron</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spotlight" id="resources">
+    <div class="spotlight-container">
+      <div class="spotlight-text">
+        <h2><i class="fas fa-microscope" style="margin-right:10px;"></i>Lesson spotlight</h2>
+        <p>Key investigations and phenomena you'll encounter this year.</p>
+        <ul class="spotlight-list">
+          <li><i class="fas fa-flask"></i> Investigate phase changes and molecular motion</li>
+          <li><i class="fas fa-globe-americas"></i> Model plate tectonics and Earth's changing surface</li>
+          <li><i class="fas fa-recycle"></i> Analyze the life cycle of synthetic materials</li>
+          <li><i class="fas fa-seedling"></i> Trace energy flow through photosynthesis and respiration</li>
+        </ul>
+      </div>
+      <div class="spotlight-visual">
+        <i class="fas fa-dna"></i>
+      </div>
+    </div>
+  </section>
+
+  <section class="fact-section">
+    <div class="fact-container">
+      <div class="fact-icon"><i class="fas fa-quote-left"></i></div>
+      <p class="fact-text">The important thing is not to stop questioning. Curiosity has its own reason for existing.</p>
+      <p class="fact-author">— Albert Einstein</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo">
+          <i class="fas fa-atom"></i> <span class="blue" style="color:white;-webkit-text-fill-color:white;">Inspire</span><span class="green" style="color:#7cb342;-webkit-text-fill-color:#7cb342;">Science</span>
+        </div>
+        <p>7th Grade Integrated Science. Built on the 5E instructional framework to spark curiosity, critical thinking, and 3D spatial reasoning &mdash; all on one page.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="#units">Units</a></li>
+            <li><a href="#lab">3D Lab</a></li>
+            <li><a href="#resources">Resources</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#resources">Learning hub</a></li>
+            <li><a href="#units">Investigations</a></li>
+            <li><button type="button" class="linklike" data-toast="Newsletter sign-up is part of this page — scroll up to stay curious.">Newsletter</button></li>
+            <li><button type="button" class="linklike" data-toast="The community hub lives right here. Everything stays on this page.">Community</button></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><button type="button" class="linklike" data-toast="This is a single-page demo — no external links open."><i class="fab fa-twitter" style="margin-right:8px;"></i>Twitter</button></li>
+            <li><button type="button" class="linklike" data-toast="This is a single-page demo — no external links open."><i class="fab fa-youtube" style="margin-right:8px;"></i>YouTube</button></li>
+            <li><button type="button" class="linklike" data-toast="This is a single-page demo — no external links open."><i class="fab fa-instagram" style="margin-right:8px;"></i>Instagram</button></li>
+            <li><button type="button" class="linklike" data-toast="This is a single-page demo — no external links open."><i class="fab fa-github" style="margin-right:8px;"></i>GitHub</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Inspire Science 7 &mdash; made for curious minds <i class="fas fa-heart"></i></span>
+      <span>
+        <button type="button" class="linklike" data-toast="Privacy policy — demo content, stays on this page.">Privacy</button>
+        &middot;
+        <button type="button" class="linklike" data-toast="Terms of use — demo content, stays on this page.">Terms</button>
+      </span>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="introModal" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+    <div class="modal">
+      <button type="button" class="modal-close" id="introClose" aria-label="Close intro">
+        <i class="fas fa-xmark"></i>
+      </button>
+      <h3 id="introTitle"><i class="fas fa-rocket" style="color:#1e6f9f; margin-right:8px;"></i>Welcome to Inspire Science 7</h3>
+      <p>This entire course lives on a single page. Scroll to explore the four units, expand any unit to reveal its key concepts and investigation, then jump into the 3D lab to rotate real scientific models.</p>
+      <p><strong>Unit 1:</strong> Understanding Matter &nbsp;&middot;&nbsp; <strong>Unit 2:</strong> The Changing Earth<br>
+      <strong>Unit 3:</strong> Earth's Resources &nbsp;&middot;&nbsp; <strong>Unit 4:</strong> Interactions Within Ecosystems</p>
+      <div class="modal-note">
+        <i class="fas fa-location-arrow"></i>
+        <span>Nothing here redirects you. Every button, link, and model opens inside this same page.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="fas fa-circle-info"></i>
+    <span id="toastText">Message</span>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    function showFallback(container, message) {
+      if (!container) return;
+      container.innerHTML =
+        '<div class="three-fallback">' +
+          '<i class="fas fa-cube"></i>' +
+          '<span>' + message + '</span>' +
+        '</div>';
+    }
+
+    if (typeof THREE === 'undefined') {
+      showFallback(document.getElementById('hero3d'), '3D library could not load.');
+      showFallback(document.getElementById('lab3d'), '3D library could not load.');
+      return;
+    }
+
+    const hasOrbitControls = typeof THREE.OrbitControls === 'function';
+
+    const MAT = {
+      proton:  new THREE.MeshPhongMaterial({ color: 0xe2504a, shininess: 90, specular: 0x552222 }),
+      neutron: new THREE.MeshPhongMaterial({ color: 0x4a7fe2, shininess: 90, specular: 0x223355 }),
+      electron:new THREE.MeshPhongMaterial({ color: 0xffd166, emissive: 0x6b4c00, shininess: 110 }),
+      ring:    new THREE.MeshBasicMaterial({ color: 0x9ac7f0, transparent: true, opacity: 0.5 })
+    };
+
+    function cylinderBetween(p1, p2, radius, material, radialSegments) {
+      const dir = new THREE.Vector3().subVectors(p2, p1);
+      const len = dir.length();
+      const geo = new THREE.CylinderGeometry(radius, radius, len, radialSegments || 8);
+      const mesh = new THREE.Mesh(geo, material);
+      mesh.position.copy(p1).add(p2).multiplyScalar(0.5);
+      mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir.normalize());
+      return mesh;
+    }
+
+    function buildAtom() {
+      const group = new THREE.Group();
+      const orbits = [];
+
+      const nucleonGeo = new THREE.SphereGeometry(0.3, 20, 20);
+      const count = 12;
+      for (let i = 0; i < count; i++) {
+        const phi = Math.acos(1 - 2 * (i + 0.5) / count);
+        const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+        const rad = 0.42;
+        const mesh = new THREE.Mesh(nucleonGeo, i % 2 === 0 ? MAT.proton : MAT.neutron);
+        mesh.position.set(
+          Math.cos(theta) * Math.sin(phi) * rad,
+          Math.cos(phi) * rad,
+          Math.sin(theta) * Math.sin(phi) * rad
+        );
+        group.add(mesh);
+      }
+
+      const shells = [
+        { radius: 1.75, electrons: 2, tilt: [0.15, 0.0, 0.0],  speed: 0.9 },
+        { radius: 2.45, electrons: 4, tilt: [1.15, 0.45, 0.35], speed: 0.6 },
+        { radius: 3.15, electrons: 3, tilt: [-0.75, 0.95, -0.4], speed: 0.42 }
+      ];
+
+      const electronGeo = new THREE.SphereGeometry(0.13, 16, 16);
+
+      shells.forEach(function (shell) {
+        const ring = new THREE.Mesh(
+          new THREE.TorusGeometry(shell.radius, 0.014, 8, 140),
+          MAT.ring
+        );
+        ring.rotation.set(shell.tilt[0], shell.tilt[1], shell.tilt[2]);
+        group.add(ring);
+
+        const orbitGroup = new THREE.Group();
+        orbitGroup.rotation.set(shell.tilt[0], shell.tilt[1], shell.tilt[2]);
+
+        for (let e = 0; e < shell.electrons; e++) {
+          const electron = new THREE.Mesh(electronGeo, MAT.electron);
+          const angle = (e / shell.electrons) * Math.PI * 2;
+          electron.position.set(
+            Math.cos(angle) * shell.radius,
+            Math.sin(angle) * shell.radius,
+            0
+          );
+          orbitGroup.add(electron);
+        }
+
+        group.add(orbitGroup);
+        orbits.push({ group: orbitGroup, speed: shell.speed });
+      });
+
+      group.userData.update = function (dt) {
+        orbits.forEach(function (o) { o.group.rotation.z += o.speed * dt; });
+        group.rotation.y += dt * 0.12;
+      };
+
+      return group;
+    }
+
+    function buildEarthLayers() {
+      const group = new THREE.Group();
+      const CUT = Math.PI * 1.5;
+
+      function layer(radius, color, opacity, wire) {
+        const geo = new THREE.SphereGeometry(radius, 64, 48, 0, CUT);
+        const mat = new THREE.MeshPhongMaterial({
+          color: color,
+          shininess: 22,
+          side: THREE.DoubleSide,
+          transparent: opacity < 1,
+          opacity: opacity
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        if (wire) {
+          const wf = new THREE.Mesh(
+            new THREE.SphereGeometry(radius * 1.002, 28, 18, 0, CUT),
+            new THREE.MeshBasicMaterial({
+              color: 0xffffff, wireframe: true, transparent: true, opacity: 0.18
+            })
+          );
+          mesh.add(wf);
+        }
+        return mesh;
+      }
+
+      group.add(layer(1.85, 0x3f8b3a, 1.0, true));
+      group.add(layer(1.74, 0xd9601d, 1.0, false));
+      group.add(layer(1.10, 0xffa53d, 1.0, false));
+      group.add(layer(0.58, 0xffe27a, 1.0, false));
+
+      group.rotation.set(0.12, -0.5, 0.06);
+
+      group.userData.update = function () { group.rotation.y += 0.0025; };
+
+      return group;
+    }
+
+    function buildDNA() {
+      const group = new THREE.Group();
+
+      const strandMatA = new THREE.MeshPhongMaterial({ color: 0x1e6f9f, shininess: 80 });
+      const strandMatB = new THREE.MeshPhongMaterial({ color: 0x18a38b, shininess: 80 });
+      const rungMats = [
+        new THREE.MeshPhongMaterial({ color: 0xe2504a, shininess: 60 }),
+        new THREE.MeshPhongMaterial({ color: 0xffd166, shininess: 60 }),
+        new THREE.MeshPhongMaterial({ color: 0x8b5cf6, shininess: 60 }),
+        new THREE.MeshPhongMaterial({ color: 0xf97316, shininess: 60 })
+      ];
+
+      const steps = 34;
+      const rise = 0.26;
+      const twist = 0.36;
+      const radius = 1.35;
+      const beadGeo = new THREE.SphereGeometry(0.135, 16, 16);
+
+      const ptsA = [];
+      const ptsB = [];
+
+      for (let i = 0; i < steps; i++) {
+        const angle = i * twist;
+        const y = (i - (steps - 1) / 2) * rise;
+
+        const a = new THREE.Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
+        const b = new THREE.Vector3(Math.cos(angle + Math.PI) * radius, y, Math.sin(angle + Math.PI) * radius);
+
+        ptsA.push(a);
+        ptsB.push(b);
+
+        const beadA = new THREE.Mesh(beadGeo, strandMatA);
+        beadA.position.copy(a);
+        group.add(beadA);
+
+        const beadB = new THREE.Mesh(beadGeo, strandMatB);
+        beadB.position.copy(b);
+        group.add(beadB);
+
+        if (i % 2 === 0) {
+          group.add(cylinderBetween(a, b, 0.055, rungMats[i % rungMats.length], 6));
+        }
+      }
+
+      for (let i = 0; i < steps - 1; i++) {
+        group.add(cylinderBetween(ptsA[i], ptsA[i + 1], 0.07, strandMatA, 8));
+        group.add(cylinderBetween(ptsB[i], ptsB[i + 1], 0.07, strandMatB, 8));
+      }
+
+      group.userData.update = function () { group.rotation.y += 0.004; };
+
+      return group;
+    }
+
+    function buildLattice() {
+      const group = new THREE.Group();
+
+      const cationMat = new THREE.MeshPhongMaterial({ color: 0x1e6f9f, shininess: 100, specular: 0x88bbff });
+      const anionMat  = new THREE.MeshPhongMaterial({ color: 0xffb347, shininess: 100, specular: 0xffddaa });
+      const bondMat   = new THREE.MeshPhongMaterial({ color: 0x9ac7f0, transparent: true, opacity: 0.45 });
+
+      const N = 3;
+      const spacing = 1.25;
+      const offset = (N - 1) * spacing / 2;
+
+      const smallGeo = new THREE.SphereGeometry(0.3, 20, 20);
+      const largeGeo = new THREE.SphereGeometry(0.42, 20, 20);
+
+      const points = [];
+
+      for (let x = 0; x < N; x++) {
+        for (let y = 0; y < N; y++) {
+          for (let z = 0; z < N; z++) {
+            const isCation = (x + y + z) % 2 === 0;
+            const mesh = new THREE.Mesh(isCation ? smallGeo : largeGeo,
+                                        isCation ? cationMat : anionMat);
+            const px = x * spacing - offset;
+            const py = y * spacing - offset;
+            const pz = z * spacing - offset;
+            mesh.position.set(px, py, pz);
+            group.add(mesh);
+            points.push({ pos: mesh.position.clone(), grid: [x, y, z] });
+          }
+        }
+      }
+
+      points.forEach(function (p) {
+        const gx = p.grid[0], gy = p.grid[1], gz = p.grid[2];
+        [[1, 0, 0], [0, 1, 0], [0, 0, 1]].forEach(function (d) {
+          const nx = gx + d[0], ny = gy + d[1], nz = gz + d[2];
+          if (nx < N && ny < N && nz < N) {
+            const target = new THREE.Vector3(
+              nx * spacing - offset,
+              ny * spacing - offset,
+              nz * spacing - offset
+            );
+            group.add(cylinderBetween(p.pos, target, 0.035, bondMat, 5));
+          }
+        });
+      });
+
+      group.userData.update = function () {
+        group.rotation.y += 0.0035;
+        group.rotation.x += 0.0008;
+      };
+
+      return group;
+    }
+
+    function Viewer3D(container, options) {
+      if (!container) return null;
+      options = options || {};
+
+      try {
+        const testCanvas = document.createElement('canvas');
+        const gl = testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl');
+        if (!gl) throw new Error('no webgl');
+      } catch (err) {
+        showFallback(container, 'WebGL is not available.');
+        return null;
+      }
+
+      const self = this;
+      this.container = container;
+      this.elapsed = 0;
+      this.visible = true;
+      this.current = null;
+      this.disposed = false;
+
+      this.scene = new THREE.Scene();
+      this.camera = new THREE.PerspectiveCamera(45, 1, 0.1, 2000);
+      this.camera.position.set(0, 1.5, 9);
+
+      this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      this.renderer.setClearAlpha(0);
+      container.appendChild(this.renderer.domElement);
+
+      this.scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+
+      const keyLight = new THREE.DirectionalLight(0xffffff, 0.95);
+      keyLight.position.set(6, 9, 10);
+      this.scene.add(keyLight);
+
+      const rimLight = new THREE.DirectionalLight(0x86b8ff, 0.65);
+      rimLight.position.set(-9, -5, -7);
+      this.scene.add(rimLight);
+
+      const fillLight = new THREE.PointLight(0x66aaff, 0.55, 80);
+      fillLight.position.set(0, 0, 9);
+      this.scene.add(fillLight);
+
+      if (hasOrbitControls) {
+        this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+        this.controls.enableDamping = true;
+        this.controls.dampingFactor = 0.08;
+        this.controls.enablePan = false;
+        this.controls.rotateSpeed = 0.9;
+        this.controls.autoRotate = options.autoRotate !== false;
+        this.controls.autoRotateSpeed = options.autoRotateSpeed || 1.4;
+        this.controls.enableZoom = options.zoom !== false;
+        this.controls.minDistance = 3;
+        this.controls.maxDistance = 40;
+      }
+
+      this.resize();
+      if (window.ResizeObserver) {
+        this.resizeObserver = new ResizeObserver(function () { self.resize(); });
+        this.resizeObserver.observe(container);
+      } else {
+        window.addEventListener('resize', function () { self.resize(); });
+      }
+
+      if ('IntersectionObserver' in window) {
+        this.io = new IntersectionObserver(function (entries) {
+          self.visible = entries[0].isIntersecting;
+        }, { threshold: 0.01 });
+        this.io.observe(container);
+      }
+
+      this.clock = new THREE.Clock();
+      this.tick = function () {
+        if (self.disposed) return;
+        self.rafId = requestAnimationFrame(self.tick);
+
+        const dt = Math.min(self.clock.getDelta(), 0.1);
+        self.elapsed += dt;
+
+        if (self.current && self.current.userData.update) {
+          self.current.userData.update(dt, self.elapsed);
+        }
+        if (self.controls) self.controls.update();
+
+        if (self.visible) self.renderer.render(self.scene, self.camera);
+      };
+      this.tick();
+    }
+
+    Viewer3D.prototype.resize = function () {
+      const w = this.container.clientWidth || 1;
+      const h = this.container.clientHeight || 1;
+      this.camera.aspect = w / h;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(w, h);
+    };
+
+    Viewer3D.prototype.fitCamera = function (object3d) {
+      const box = new THREE.Box3().setFromObject(object3d);
+      if (box.isEmpty()) return;
+
+      const sphere = box.getBoundingSphere(new THREE.Sphere());
+      const fovRad = THREE.MathUtils.degToRad(this.camera.fov);
+      const distance = (sphere.radius / Math.sin(fovRad / 2)) * 1.15;
+
+      this.camera.position.set(0, sphere.center.y * 0.5, distance);
+      this.camera.near = Math.max(distance / 100, 0.1);
+      this.camera.far = distance * 20;
+      this.camera.updateProjectionMatrix();
+
+      if (this.controls) {
+        this.controls.target.copy(sphere.center);
+        this.controls.minDistance = sphere.radius * 1.1;
+        this.controls.maxDistance = sphere.radius * 6;
+        this.controls.update();
+      }
+    };
+
+    Viewer3D.prototype.loadModel = function (group) {
+      if (this.current) {
+        this.scene.remove(this.current);
+        this.disposeObject(this.current);
+      }
+      this.current = group;
+      this.scene.add(group);
+      this.fitCamera(group);
+    };
+
+    Viewer3D.prototype.disposeObject = function (object) {
+      object.traverse(function (child) {
+        if (child.geometry) child.geometry.dispose();
+        if (child.material) {
+          if (Array.isArray(child.material)) {
+            child.material.forEach(function (m) { m.dispose(); });
+          } else {
+            child.material.dispose();
+          }
+        }
+      });
+    };
+
+    /* Hero viewer */
+    const heroViewer = new Viewer3D(document.getElementById('hero3d'), {
+      autoRotate: true,
+      autoRotateSpeed: 1.8,
+      zoom: false
+    });
+    if (heroViewer) {
+      heroViewer.loadModel(buildAtom());
+      const baseUpdate = heroViewer.current.userData.update;
+      heroViewer.current.userData.update = function (dt, t) {
+        baseUpdate(dt, t);
+        heroViewer.current.rotation.y += dt * 0.15;
+      };
+    }
+
+    /* Lab viewer */
+    const labViewer = new Viewer3D(document.getElementById('lab3d'), {
+      autoRotate: true,
+      autoRotateSpeed: 1.1,
+      zoom: true
+    });
+
+    const MODELS = {
+      atom: {
+        build: buildAtom,
+        title: 'Atomic structure',
+        desc: 'A nucleus of protons and neutrons is surrounded by electrons travelling in energy levels. Explore how the arrangement of particles explains the properties of matter (Unit 1).',
+        legend: [['#e2504a', 'Proton'], ['#4a7fe2', 'Neutron'], ['#ffd166', 'Electron']]
+      },
+      earth: {
+        build: buildEarthLayers,
+        title: 'Earth\u2019s interior',
+        desc: 'A cutaway view of our planet: a thin rocky crust, a hot convecting mantle, a liquid outer core, and a solid inner core. These layers drive plate motion and Earth\u2019s changing surface (Unit 2).',
+        legend: [['#3f8b3a', 'Crust'], ['#d9601d', 'Mantle'], ['#ffa53d', 'Outer core'], ['#ffe27a', 'Inner core']]
+      },
+      dna: {
+        build: buildDNA,
+        title: 'DNA double helix',
+        desc: 'Two sugar-phosphate backbones twist around each other, joined by base-pair rungs. DNA carries the instructions for building proteins and passing traits to offspring (Unit 4).',
+        legend: [['#1e6f9f', 'Backbone strand 1'], ['#18a38b', 'Backbone strand 2'], ['#e2504a', 'Base pair']]
+      },
+      lattice: {
+        build: buildLattice,
+        title: 'Crystal lattice',
+        desc: 'Ions arranged in a repeating 3D pattern. The strong electrostatic forces between oppositely charged ions give crystals their high melting points and hardness (Unit 3 \u2014 Materials Science).',
+        legend: [['#1e6f9f', 'Cation (+)'], ['#ffb347', 'Anion (\u2013)'], ['#9ac7f0', 'Ionic bond']]
+      }
+    };
+
+    const descEl = document.getElementById('model-desc');
+    const legendEl = document.getElementById('legend');
+    const buttons = Array.prototype.slice.call(document.querySelectorAll('.model-btn'));
+
+    function switchModel(key) {
+      const model = MODELS[key];
+      if (!model || !labViewer) return;
+
+      labViewer.loadModel(model.build());
+
+      descEl.innerHTML = '<strong>' + model.title + '.</strong> ' + model.desc;
+
+      legendEl.innerHTML = model.legend.map(function (item) {
+        return '<span class="legend-item"><span class="legend-dot" style="background:' +
+               item[0] + '"></span> ' + item[1] + '</span>';
+      }).join('');
+
+      buttons.forEach(function (btn) {
+        const isActive = btn.getAttribute('data-model') === key;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        switchModel(btn.getAttribute('data-model'));
+      });
+    });
+
+    if (labViewer) {
+      switchModel('atom');
+      window.InspireLab = { show: switchModel };
+    } else {
+      showFallback(document.getElementById('lab3d'), 'Your browser could not start WebGL. The 3D lab is unavailable, but all lesson content is still accessible.');
+    }
+
+  })();
+  </script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    const toastEl = document.getElementById('toast');
+    const toastText = document.getElementById('toastText');
+    let toastTimer = null;
+
+    function showToast(message) {
+      toastText.textContent = message;
+      toastEl.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () {
+        toastEl.classList.remove('show');
+      }, 3000);
+    }
+
+    document.querySelectorAll('[data-toast]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        showToast(el.getAttribute('data-toast'));
+      });
+    });
+
+    const introModal = document.getElementById('introModal');
+    const introBtn = document.getElementById('introBtn');
+    const introClose = document.getElementById('introClose');
+
+    function openIntro() {
+      introModal.classList.add('open');
+      introClose.focus();
+    }
+    function closeIntro() {
+      introModal.classList.remove('open');
+      introBtn.focus();
+    }
+
+    introBtn.addEventListener('click', openIntro);
+    introClose.addEventListener('click', closeIntro);
+    introModal.addEventListener('click', function (e) {
+      if (e.target === introModal) closeIntro();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && introModal.classList.contains('open')) closeIntro();
+    });
+
+    document.querySelectorAll('.unit-card').forEach(function (card) {
+      const trigger = card.querySelector('.unit-link');
+      const extra = card.querySelector('.unit-extra');
+      if (!trigger || !extra) return;
+
+      trigger.addEventListener('click', function () {
+        const isOpen = card.classList.toggle('expanded');
+        trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        extra.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        
+        const unitLabel = card.querySelector('h3').textContent.split(':')[0].trim();
+        trigger.innerHTML = (isOpen ? 'Show less' : 'Explore ' + unitLabel) +
+          ' <i class="fas fa-arrow-right"></i>';
+      });
+    });
+
+    document.querySelectorAll('.see3d').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const target = btn.getAttribute('data-model-target');
+        if (window.InspireLab && target) {
+          window.InspireLab.show(target);
+        }
+        document.getElementById('lab').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    const navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+    const sections = ['top', 'units', 'lab', 'resources']
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+
+    function setActiveNav() {
+      const scrollPos = window.scrollY + 140;
+      let currentId = 'top';
+      sections.forEach(function (sec) {
+        if (sec.offsetTop <= scrollPos) currentId = sec.id;
+      });
+      navLinks.forEach(function (link) {
+        const isActive = link.getAttribute('href') === '#' + currentId;
+        link.classList.toggle('active', isActive);
+      });
+    }
+
+    window.addEventListener('scroll', setActiveNav, { passive: true });
+    window.addEventListener('load', setActiveNav);
+    setActiveNav();
+
+  })();
+  </script>
+
+</body>
+</html>
